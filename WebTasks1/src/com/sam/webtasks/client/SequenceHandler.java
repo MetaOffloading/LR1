@@ -71,202 +71,23 @@ public class SequenceHandler {
 			 * The code here defines the main sequence of events in the experiment *
 			 **********************************************************************/
 			case 1:
-				SessionInfo.sessionKey = SessionKey.Get();
-				
-				ClickPage.Run(Instructions.Get(0), "Next");
-				break;
-			case 2:
-				IOtask2Block block0 = new IOtask2Block();
-				block0.totalCircles = 7;
-				block0.blockNum = -1;
-				block0.nTargets = 0;
-				block0.logDragData = true;
-				block0.Run();
-				break;
-			case 3:
-				ClickPage.Run(Instructions.Get(1),  "Next");
-				break;
-			case 4:
 				IOtask2Block block1 = new IOtask2Block();
-				block1.totalCircles = 7;
-				block1.blockNum = -2;
-				block1.nTargets = 1;
-				block1.logDragData = true;
-				block1.Run();
-				break;
-			case 5:
-				if (IOtask2BlockContext.getnHits() == 0) { 
-					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-2); //this line means that instead of moving forward we will repeat the previous instructions
-					ClickPage.Run(Instructions.Get(2), "Try again");
-				} else {
-					SequenceHandler.Next(); //move to the next instruction
-				}
-				break;
-			case 6:
-				ClickPage.Run(Instructions.Get(3), "Next");
-				break;
-			case 7:
-				IOtask2Block block2 = new IOtask2Block();
-				block2.totalCircles = 9;
-				block2.blockNum = -3;
-				block2.nTargets = 3;
-				block2.logDragData = true;
-				block2.Run();
-				break;
-			case 8:
-				ClickPage.Run(Instructions.Get(4), "Next");
-				break;
-			case 9:
-				IOtask2Block block3 = new IOtask2Block();
-				block3.totalCircles = 11;
-				block3.blockNum = -4;
-				block3.nTargets = 5;
-				block3.logDragData = true;
-				block3.Run();
-				break;
-			case 10:
-				ClickPage.Run(Instructions.Get(5),  "Next");
-				break;
-			case 11:
-				IOtask2Block block4 = new IOtask2Block();
-				block4.totalCircles = 13;
-				block4.blockNum = -5;
-				block4.nTargets = 7;
-				block4.logDragData = true;
-				block4.Run();
-				break;
-			case 12:
-				Slider.Run(Instructions.Get(6), "0%", "100%");
-				break;
-			case 13:
-				PHP.logData("jol1", ""+Slider.getSliderValue(), true);
-				break;
-			case 14:
-				Slider.Run(Instructions.Get(7), "0%", "100%");
-				break;
-			case 15:
-				PHP.logData("jol3", ""+Slider.getSliderValue(), true);
-				break;
-			case 16:
-				Slider.Run(Instructions.Get(8), "0%", "100%");
-				break;
-			case 17:
-				PHP.logData("jol5", ""+Slider.getSliderValue(), true);
-				break;
-			case 18:
-				Slider.Run(Instructions.Get(9), "0%", "100%");
-				break;
-			case 19:
-				PHP.logData("jol7", ""+Slider.getSliderValue(), true);
-				break;		
-			case 20:
-				ClickPage.Run(Instructions.Get(10), "Next");
-				break;
-			case 21:
-				IOtask2Block block5 = new IOtask2Block();
-				block5.totalCircles = 13;
-				block5.blockNum = -6;
-				block5.nTargets = 7;
-				block5.offloadCondition=Names.REMINDERS_MANDATORY_TARGETONLY;
-				block5.logDragData = true;
-				block5.Run();
-				break;
-			case 22:
-				if (IOtask2BlockContext.getnHits() < 6) { 
-					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-2); //this line means that instead of moving forward we will repeat the previous instructions
-					ClickPage.Run(Instructions.Get(11), "Try again");
-				} else {
-					SequenceHandler.Next(); //move to the next instruction
-				}
-				break;
-			case 23:
-				ClickPage.Run(Instructions.Get(12),  "Next");
-				break;
-			case 24:
-				//add progress bar to screen
-				ProgressBar.Initialise();
-				ProgressBar.Show();
-				ProgressBar.SetProgress(0,  48);
-				Params.progress=0;
+				block1.blockNum = 0;
+				block1.WMC = true;
+				block1.nTargetsVariable = true;
+				block1.nTargetsShuffle = false;
 				
-				IOtask2Block block6 = new IOtask2Block();
-				block6.blockNum = 1;
-				block6.WMC = true;
-				block6.nTargetsVariable = true;
-				block6.nTargetsShuffle = true;
-				block6.updateProgress = true;
-				block6.offloadCondition=Names.REMINDERS_NOTALLOWED;
+				block1.nTargetsList.add(1);
+				block1.nTargetsList.add(2);
+				block1.nTargetsList.add(3);
+				block1.nTargetsList.add(4);
+				block1.nTargetsList.add(5);
+				block1.nTargetsList.add(6);
 				
-				for (int i=0; i<4; i++) {
-					block6.nTargetsList.add(1);
-					block6.nTargetsList.add(3);
-					block6.nTargetsList.add(5);
-					block6.nTargetsList.add(7);
-				}
-				
-				block6.nTrials = 16;
 
-				block6.logDragData = true;
-				block6.Run();	
-				break;
-			case 25:
-				ClickPage.Run(Instructions.Get(13),  "Next");
-				break;
-			case 26:
-				IOtask2Block block7 = new IOtask2Block();
-				block7.blockNum = 2;
-				block7.WMC = true;
-				block7.nTargetsVariable = true;
-				block7.nTargetsShuffle = true;
-				block7.updateProgress = true;
-				block7.offloadCondition=Names.REMINDERS_MANDATORY_TARGETONLY;
-				
-				for (int i=0; i<4; i++) {
-					block7.nTargetsList.add(1);
-					block7.nTargetsList.add(3);
-					block7.nTargetsList.add(5);
-					block7.nTargetsList.add(7);
-				}
-				
-				block7.nTrials = 16;
+				block1.nTrials = 6;
 
-				block7.logDragData = true;
-				block7.Run();	
-				break;
-			case 27:
-				ClickPage.Run(Instructions.Get(14),  "Next");
-				break;
-			case 28:
-				IOtask2Block block8 = new IOtask2Block();
-				block8.blockNum = 3;
-				block8.WMC = true;
-				block8.nTargetsVariable = true;
-				block8.nTargetsShuffle = true;
-				block8.updateProgress = true;
-				
-				for (int i=0; i<4; i++) {
-					block8.nTargetsList.add(1);
-					block8.nTargetsList.add(3);
-					block8.nTargetsList.add(5);
-					block8.nTargetsList.add(7);
-				}
-				
-				block8.nTrials = 16;
-
-				block8.logDragData = true;
-				block8.Run();	
-				break;
-			case 29:
-				ProgressBar.Hide();
-				
-				String finishData = "" + TimeStamp.Now();
-				
-				PHP.UpdateStatus("finished");
-				PHP.logData("finish", finishData, true);
-				
-				break;
-			case 30:
-				ClickPage.Run(Instructions.Get(15),  "nobutton");
+				block1.Run();	
 				break;
 			}
 			break;
