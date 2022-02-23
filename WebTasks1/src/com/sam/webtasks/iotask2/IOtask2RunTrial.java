@@ -496,6 +496,23 @@ public class IOtask2RunTrial {
 				public void onNodeDragEnd(NodeDragEndEvent event) {
 					final int clickedCircle = IOtask2BlockContext.getClickedCircle();
 
+					if (IOtask2BlockContext.getHighEffort()) {
+						if (clickedCircle != IOtask2BlockContext.getNextCircle()) {
+							int nClicks = 5;
+
+							while (nClicks > 0) {
+								String message = "Click " + nClicks + " times.";
+
+								if (nClicks-- == 1) {
+									message = "Click once.";
+								}
+
+								Window.alert(message);
+							}
+
+						}
+					}
+					
 					if (IOtask2BlockContext.getLogDragData()) {
 						int circleNum = clickedCircle + IOtask2BlockContext.getCircleAdjust();
 

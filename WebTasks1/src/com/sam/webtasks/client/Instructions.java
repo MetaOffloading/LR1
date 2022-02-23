@@ -21,19 +21,19 @@ public class Instructions {
 			break;
 		case 1:
 			i="Now you will continue the same task, but sometimes there will be something else to "
-                    + "do.<br><br>As well as dragging each circle in turn to the "
+                    + "do.<br><br>In addition to dragging each circle in turn to the "
                     + "bottom of the screen, there will sometimes be special "
                     + "circles that you should drag in another direction (left, top, or right) instead of towards the bottom.<br><br>"
                     + "These special circles will initially appear in a different colour "
                     + "when they are first shown on the screen, instead of yellow. This is an "
                     + "instruction telling you where they should go.<br><br>"
-                    + "For example, suppose that the circle with 7 in it was first shown in blue "
-                    + "when it appeared on the screen. That would be an instruction that "
+                    + "For example, suppose that the circle with 7 was first shown in blue "
+                    + "when it appeared on the screen. This would be an instruction that "
                     + "when you get to 7 in the sequence, you should drag that circle "
                     + "to the blue side of the box (left) instead of the bottom.<br><br>"
                     + "You will still be able to drag any "
                     + "circle to the bottom of the box, but you should try to "
-                    + "remember to drag these special circles to the instructed "
+                    + "remember dragging these special circles to the instructed "
                     + "location instead.";
 			break;
 		case 2:
@@ -76,7 +76,7 @@ public class Instructions {
 					+ "that you can never get any of them correct.";
 			break;
 		case 9:
-			i = "Now that you have had some practice, we would like you to tell us how accurately you "
+			i = "Now we would like you to <b>predict</b> how accurately you "
 					+ "think you can perform this task when you have <b>7</b> special circles to remember. "
 					+ "<br><br>Please use the scale below to indicate what percentage "
 					+ "of times you will remember to drag the special circle to the instructed side."
@@ -90,11 +90,14 @@ public class Instructions {
                     + "could immediately drag it next to the blue (left) side of the box. Then, when "
                     + "you get to that circle in the sequence its location would remind you where it is supposed "
                     + "to go. If you do this for all of the special circles it should be easy to remember them."
-                    + "<br><br>Please now try the task again, using this strategy to help you. The computer will "
+                    + "<br><br>Please now try the task with 5 special circles again, using this strategy to help you. The computer will "
                     + "only let you proceed if you set a reminder for each special circle.";
 			break;
+		case 101:
+			i="High effort";
+			break;
 		case 11:
-			i="You need to respond correctly to at least 6 of the special circles to continue.";
+			i="You need to respond correctly to at least 4 of the special circles to continue.";
 			break;
 		case 12:
 			i="Now the experiment will start for real.<br><br>In the next block of trials you will do the task 16 times and you will "
@@ -120,6 +123,28 @@ public class Instructions {
 					+ "please return to the original webpage where you opened the experiment. "
 					+ "Then you will enter the above experiment code when prompted.";
 			break;
+		case 16:
+			i="Now the experiment will start for real.<br><br>In the next block of trials you will do the task <b>8 times</b> and each time you will "
+				+ "be told the number of special circles you get.<br><br> "
+				+ "The number of special circles will range <b>from 1 to 8</b>. The aim is to get as many special circles correct as possible.<br><br>When doing the task, it is up to you whether to set reminders "
+				+ "or just remember the special circles with your own memory.<br><br>"
+				+ "You can choose whichever option you prefer. So each time you do the task, feel free to either set reminders for the special "
+				+ "circles or just use your own memory. It is totally up to you.";
+			break;
+		case 17:
+			i="The next part of the experiment will be similar, but this time setting reminders will require more effort.<br><br>"
+			    + "You can perform the same strategy by dragging special circles to their designated sides, but there will be an additional clicking task after each reminder you set.<br><br>"
+				+ "A window will pop up after you set a reminder. You will have to click and close the window 5 times before you can proceed to the next circle.<br><br>"
+			    + "Please now practice this modified strategy in a task with 5 special circles. The computer will not let you proceed unless you set a reminder every time.";
+			break;
+		case 171:
+			i="less";
+			break;
+		case 18:
+			i="Now the experiment will continue. In this block of trials you will do the same task <b>8 times</b> again, and each time you will be told the number of special circles <b>from 1 to 8</b>. The aim is to get as many special circles correct as possible.<br><br>"
+			    + "When doing the task, it is up to you whether to set reminders or just remember the special circles with your own memory. However, you will be using the <b>modified strategy</b> if you decide to set a reminder.<br><br>"
+			    + "You can choose whichever option you prefer. So each time you do the task, feel free to either set reminders for the special "
+				+ "circles or just use your own memory. It is totally up to you.";
 		}
 
 		return(i);	

@@ -145,6 +145,11 @@ public class IOtask2BlockContext {
 	public static int getNTrials() {
 		return (blockContext.nTrials);
 	}
+	
+	// is this a high effort block?
+	public static boolean getHighEffort() {
+		return (blockContext.highEffort);
+	}
 
 	// what reward frame are we in?
 	public static int getRewardFrame() {

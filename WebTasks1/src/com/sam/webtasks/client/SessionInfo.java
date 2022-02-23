@@ -10,7 +10,7 @@ public class SessionInfo {
 	//are we just testing locally? set this to true if so and it won't try to log data to the database
 	public static boolean localTesting=true;
 	public static boolean runInfoConsentPages=false; //should we do the info and consent pages?
-	public static int experimentType = Names.EXPERIMENT_WMC;
+	public static int experimentType = Names.EXPERIMENT_PROLIFIC;
 	
 	//what is the name for this experiment?
 	public static String experimentCode="WMC";
@@ -39,9 +39,9 @@ public class SessionInfo {
 	//if you want to specify the level of any of those factors, set it with specifiedLevels. otherwise set to -1
 	//e.g. specifiedLevels = {-1, 2, -1}; would randomise factors 1 and 3, and set the second factor to level 2
 	//NB levels range from 0 to (maximum - 1)
-	public static String[] counterbalanceFactors = {"startingCondition", "revealableClock"};
-	public static int[] counterbalanceLevels = {2, 2};
-	public static int[] specifiedLevels = {-1, -1};
+	public static String[] counterbalanceFactors = {"effort"};
+	public static int[] counterbalanceLevels = {2};
+	public static int[] specifiedLevels = {-1};
 	
 	/*************************************************/
     /* no need to edit the settings below this point */

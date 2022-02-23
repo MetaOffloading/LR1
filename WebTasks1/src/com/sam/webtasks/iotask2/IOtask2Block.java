@@ -107,6 +107,9 @@ public class IOtask2Block {
 	// tell participants how many points they've scored at each PreTrial screen?
 	public boolean showPoints = true;
 	
+	// how much effort to set a reminder?
+	public boolean highEffort = false;
+	
 	//show point values on either side
 	public boolean showPointLabels = false;
 	
