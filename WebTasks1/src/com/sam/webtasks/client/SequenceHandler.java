@@ -70,7 +70,7 @@ public class SequenceHandler {
 			/***********************************************************************
 			 * The code here defines the main sequence of events in the experiment *
 			 **********************************************************************/
-			//Practice 1: no special circles
+			//Practice 1: no special circles 
 			case 1:
 				SessionInfo.sessionKey = SessionKey.Get();
 				ClickPage.Run(Instructions.Get(0), "Next");
