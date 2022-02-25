@@ -73,11 +73,7 @@ public class SequenceHandler {
 			//Practice 1: no special circles
 			case 1:
 				SessionInfo.sessionKey = SessionKey.Get();
-
-				ClickPage.Run(Instructions.Get(10), "Next");
-				
-				
-				
+				ClickPage.Run(Instructions.Get(0), "Next");
 				break;
 			case 2:
 				IOtask2Block block0 = new IOtask2Block();
@@ -85,10 +81,6 @@ public class SequenceHandler {
 				block0.blockNum = -1;
 				block0.nTargets = 0;
 				block0.logDragData = true;
-				
-				if(Counterbalance.getFactorLevel("effort")==1) {
-					block0.highEffort = true;
-				}
 				
 				block0.Run();
 				break;
@@ -115,29 +107,29 @@ public class SequenceHandler {
 				}
 				break;
 				
-			//Practice 3: three special circles
+			//Practice 3: four special circles
 			case 6:
 				ClickPage.Run(Instructions.Get(3), "Next");
 				break;
 			case 7:
 				IOtask2Block block2 = new IOtask2Block();
-				block2.totalCircles = 9;
+				block2.totalCircles = 10;
 				block2.blockNum = -3;
-				block2.nTargets = 3;
+				block2.nTargets = 4;
 				block2.offloadCondition=Names.REMINDERS_NOTALLOWED;
 				block2.logDragData = true;
 				block2.Run();
 				break;
 				
-			//Practice 4: five special circles
+			//Practice 4: eight special circles
 			case 8:
 				ClickPage.Run(Instructions.Get(4), "Next");
 				break;
 			case 9:
 				IOtask2Block block3 = new IOtask2Block();
-				block3.totalCircles = 11;
+				block3.totalCircles = 14;
 				block3.blockNum = -4;
-				block3.nTargets = 5;
+				block3.nTargets = 8;
 				block3.offloadCondition=Names.REMINDERS_NOTALLOWED;
 				block3.logDragData = true;
 				block3.Run();
@@ -154,34 +146,30 @@ public class SequenceHandler {
 				Slider.Run(Instructions.Get(7), "0%", "100%");
 				break;
 			case 13:
-				PHP.logData("jol3", ""+Slider.getSliderValue(), true);
+				PHP.logData("jol4", ""+Slider.getSliderValue(), true);
 				break;
 			case 14:
 				Slider.Run(Instructions.Get(8), "0%", "100%");
 				break;
 			case 15:
-				PHP.logData("jol5", ""+Slider.getSliderValue(), true);
+				PHP.logData("jol8", ""+Slider.getSliderValue(), true);
 				break;
-			case 16:
-				Slider.Run(Instructions.Get(9), "0%", "100%");
-				break;
-			case 17:
-				PHP.logData("jol7", ""+Slider.getSliderValue(), true);
-				break;	
+			
 				
-			//Low-effort reminder practice
-			case 18:
-				//ClickPage.Run(Instructions.Get(0), "Next");
+			//Low-effort or High-effort reminder practice
+			case 16:
 				if(Counterbalance.getFactorLevel("effort")==0) {
 					ClickPage.Run(Instructions.Get(10), "Next");
 				} else {
 					ClickPage.Run(Instructions.Get(101), "Next");
 				}
 				
-				//ClickPage.Run(Instructions.Get(10), "Next");
 				break;
-			case 19:
+			case 17:
 				IOtask2Block block4 = new IOtask2Block();
+				if(Counterbalance.getFactorLevel("effort")==1) {
+					block4.highEffort = true;
+				}
 				block4.totalCircles = 11;
 				block4.blockNum = -5;
 				block4.nTargets = 5;
@@ -189,7 +177,7 @@ public class SequenceHandler {
 				block4.logDragData = true;
 				block4.Run();
 				break;
-			case 20:
+			case 18:
 				if (IOtask2BlockContext.getnHits() < 4) { 
 					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-2); //this line means that instead of moving forward we will repeat the previous instructions
 					ClickPage.Run(Instructions.Get(11), "Try again");
@@ -198,12 +186,15 @@ public class SequenceHandler {
 				}
 				break;
 				
-			//Block 1: Low-effort offloading
-			case 21:
+			//Block 1: Low-effort or High-effort offloading
+			case 19:
 				ClickPage.Run(Instructions.Get(16),  "Next");
 				break;
-			case 22:
+			case 20:
 				IOtask2Block block5= new IOtask2Block();
+				if(Counterbalance.getFactorLevel("effort")==1) {
+					block5.highEffort = true;
+				}
 				block5.blockNum = 1;
 				block5.WMC = true;
 				block5.nTargetsVariable = true;
@@ -222,12 +213,19 @@ public class SequenceHandler {
 				block5.Run();	
 				break;
 				
-			//High-effort reminder practice
-			case 23:
-				ClickPage.Run(Instructions.Get(17),  "Next");
+			//Change in effort: practice
+			case 21:
+				if(Counterbalance.getFactorLevel("effort")==0) {
+					ClickPage.Run(Instructions.Get(17), "Next");
+				} else {
+					ClickPage.Run(Instructions.Get(171), "Next");
+				}
 				break;
-			case 24:
+			case 22:
 				IOtask2Block block6 = new IOtask2Block();
+				if(Counterbalance.getFactorLevel("effort")==0) {
+					block6.highEffort = true;
+				}
 				block6.totalCircles = 11;
 				block6.blockNum = -6;
 				block6.nTargets = 5;
@@ -235,7 +233,7 @@ public class SequenceHandler {
 				block6.logDragData = true;
 				block6.Run();
 				break;
-			case 25:
+			case 23:
 				if (IOtask2BlockContext.getnHits() < 4) { 
 					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-2); //this line means that instead of moving forward we will repeat the previous instructions
 					ClickPage.Run(Instructions.Get(11), "Try again");
@@ -244,12 +242,19 @@ public class SequenceHandler {
 				}
 				break;
 				
-			//Block 2: High-effort offloading
-			case 26:
-				ClickPage.Run(Instructions.Get(18),  "Next");
+			//Block 2: High-effort or Low-effort offloading
+			case 24:
+				if(Counterbalance.getFactorLevel("effort")==0) {
+					ClickPage.Run(Instructions.Get(18), "Next");
+				} else {
+					ClickPage.Run(Instructions.Get(181), "Next");
+				}
 				break;
-			case 27:
+			case 25:
 				IOtask2Block block7= new IOtask2Block();
+				if(Counterbalance.getFactorLevel("effort")==0) {
+					block7.highEffort = true;
+				}
 				block7.blockNum = 2;
 				block7.WMC = true;
 				block7.nTargetsVariable = true;
