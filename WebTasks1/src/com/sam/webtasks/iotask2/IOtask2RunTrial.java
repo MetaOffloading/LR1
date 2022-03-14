@@ -495,6 +495,15 @@ public class IOtask2RunTrial {
 				@Override
 				public void onNodeDragEnd(NodeDragEndEvent event) {
 					final int clickedCircle = IOtask2BlockContext.getClickedCircle();
+					final int circleNum2 = clickedCircle + IOtask2BlockContext.getCircleAdjust();
+
+					final int thisCircle = Integer.parseInt(circleText[clickedCircle].getText());
+
+					boolean isTarget = false;
+					
+					if (IOtask2BlockContext.getTargetSide(thisCircle-1) > 0) {
+						isTarget = true;
+					}
 
 					if (IOtask2BlockContext.getHighEffort()) {
 						if (clickedCircle != IOtask2BlockContext.getNextCircle()) {
@@ -507,7 +516,9 @@ public class IOtask2RunTrial {
 									message = "Click once.";
 								}
 
-								Window.alert(message);
+								if (isTarget) {
+									Window.alert(message);
+								}
 							}
 
 						}

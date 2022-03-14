@@ -70,7 +70,7 @@ public class SequenceHandler {
 			/***********************************************************************
 			 * The code here defines the main sequence of events in the experiment *
 			 **********************************************************************/
-			//Practice 1: no special circles 
+			//Practice 1: no special circle
 			case 1:
 				SessionInfo.sessionKey = SessionKey.Get();
 				ClickPage.Run(Instructions.Get(0), "Next");
@@ -85,15 +85,15 @@ public class SequenceHandler {
 				block0.Run();
 				break;
 				
-			//Practice 2: one special circle
+			//Practice 2: two special circles
 			case 3:
 				ClickPage.Run(Instructions.Get(1),  "Next");
 				break;
 			case 4:
 				IOtask2Block block1 = new IOtask2Block();
-				block1.totalCircles = 7;
+				block1.totalCircles = 8;
 				block1.blockNum = -2;
-				block1.nTargets = 1;
+				block1.nTargets = 2;
 				block1.offloadCondition=Names.REMINDERS_NOTALLOWED;
 				block1.logDragData = true;
 				block1.Run();
@@ -121,15 +121,15 @@ public class SequenceHandler {
 				block2.Run();
 				break;
 				
-			//Practice 4: eight special circles
+			//Practice 4: six special circles
 			case 8:
 				ClickPage.Run(Instructions.Get(4), "Next");
 				break;
 			case 9:
 				IOtask2Block block3 = new IOtask2Block();
-				block3.totalCircles = 14;
+				block3.totalCircles = 12;
 				block3.blockNum = -4;
-				block3.nTargets = 8;
+				block3.nTargets = 6;
 				block3.offloadCondition=Names.REMINDERS_NOTALLOWED;
 				block3.logDragData = true;
 				block3.Run();
@@ -155,9 +155,36 @@ public class SequenceHandler {
 				PHP.logData("jol8", ""+Slider.getSliderValue(), true);
 				break;
 			
+			//Forced Internal Block
+			case 16:
+				ClickPage.Run(Instructions.Get(19),  "Next");
+				break;
+			case 17:
+				IOtask2Block block4= new IOtask2Block();
+				
+				block4.blockNum = 1;
+				block4.WMC = true;
+				block4.offloadCondition=Names.REMINDERS_NOTALLOWED;
+				block4.nTargetsVariable = true;
+				block4.nTargetsShuffle = true;
+				
+				
+				block4.nTargetsList.add(2);
+				block4.nTargetsList.add(4);
+				block4.nTargetsList.add(6);
+				block4.nTargetsList.add(2);
+				block4.nTargetsList.add(4);
+				block4.nTargetsList.add(6);
+				block4.nTargetsList.add(2);
+				block4.nTargetsList.add(4);
+				block4.nTargetsList.add(6);
+			
+				block4.nTrials = 9;
+				block4.Run();	
+				break;
 				
 			//Low-effort or High-effort reminder practice
-			case 16:
+			case 18:
 				if(Counterbalance.getFactorLevel("effort")==0) {
 					ClickPage.Run(Instructions.Get(10), "Next");
 				} else {
@@ -165,20 +192,20 @@ public class SequenceHandler {
 				}
 				
 				break;
-			case 17:
-				IOtask2Block block4 = new IOtask2Block();
+			case 19:
+				IOtask2Block block5 = new IOtask2Block();
 				if(Counterbalance.getFactorLevel("effort")==1) {
-					block4.highEffort = true;
+					block5.highEffort = true;
 				}
-				block4.totalCircles = 11;
-				block4.blockNum = -5;
-				block4.nTargets = 5;
-				block4.offloadCondition=Names.REMINDERS_MANDATORY_TARGETONLY;
-				block4.logDragData = true;
-				block4.Run();
+				block5.totalCircles = 10;
+				block5.blockNum = -5;
+				block5.nTargets = 4;
+				block5.offloadCondition=Names.REMINDERS_MANDATORY_TARGETONLY;
+				block5.logDragData = true;
+				block5.Run();
 				break;
-			case 18:
-				if (IOtask2BlockContext.getnHits() < 4) { 
+			case 20:
+				if (IOtask2BlockContext.getnHits() < 3) { 
 					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-2); //this line means that instead of moving forward we will repeat the previous instructions
 					ClickPage.Run(Instructions.Get(11), "Try again");
 				} else {
@@ -187,54 +214,55 @@ public class SequenceHandler {
 				break;
 				
 			//Block 1: Low-effort or High-effort offloading
-			case 19:
+			case 21:
 				ClickPage.Run(Instructions.Get(16),  "Next");
 				break;
-			case 20:
-				IOtask2Block block5= new IOtask2Block();
+			case 22:
+				IOtask2Block block6= new IOtask2Block();
 				if(Counterbalance.getFactorLevel("effort")==1) {
-					block5.highEffort = true;
+					block6.highEffort = true;
 				}
-				block5.blockNum = 1;
-				block5.WMC = true;
-				block5.nTargetsVariable = true;
-				block5.nTargetsShuffle = true;
+				block6.blockNum = 2;
+				block6.WMC = true;
+				block6.nTargetsVariable = true;
+				block6.nTargetsShuffle = true;
 				
-				block5.nTargetsList.add(1);
-				block5.nTargetsList.add(2);
-				block5.nTargetsList.add(3);
-				block5.nTargetsList.add(4);
-				block5.nTargetsList.add(5);
-				block5.nTargetsList.add(6);
-				block5.nTargetsList.add(7);
-				block5.nTargetsList.add(8);
+				block6.nTargetsList.add(2);
+				block6.nTargetsList.add(4);
+				block6.nTargetsList.add(6);
+				block6.nTargetsList.add(2);
+				block6.nTargetsList.add(4);
+				block6.nTargetsList.add(6);
+				block6.nTargetsList.add(2);
+				block6.nTargetsList.add(4);
+				block6.nTargetsList.add(6);
 				
-				block5.nTrials = 8;
-				block5.Run();	
+				block6.nTrials = 9;
+				block6.Run();	
 				break;
 				
 			//Change in effort: practice
-			case 21:
+			case 23:
 				if(Counterbalance.getFactorLevel("effort")==0) {
 					ClickPage.Run(Instructions.Get(17), "Next");
 				} else {
 					ClickPage.Run(Instructions.Get(171), "Next");
 				}
 				break;
-			case 22:
-				IOtask2Block block6 = new IOtask2Block();
+			case 24:
+				IOtask2Block block7 = new IOtask2Block();
 				if(Counterbalance.getFactorLevel("effort")==0) {
-					block6.highEffort = true;
+					block7.highEffort = true;
 				}
-				block6.totalCircles = 11;
-				block6.blockNum = -6;
-				block6.nTargets = 5;
-				block6.offloadCondition=Names.REMINDERS_MANDATORY_TARGETONLY;
-				block6.logDragData = true;
-				block6.Run();
+				block7.totalCircles = 10;
+				block7.blockNum = -6;
+				block7.nTargets = 4;
+				block7.offloadCondition=Names.REMINDERS_MANDATORY_TARGETONLY;
+				block7.logDragData = true;
+				block7.Run();
 				break;
-			case 23:
-				if (IOtask2BlockContext.getnHits() < 4) { 
+			case 25:
+				if (IOtask2BlockContext.getnHits() < 3) { 
 					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-2); //this line means that instead of moving forward we will repeat the previous instructions
 					ClickPage.Run(Instructions.Get(11), "Try again");
 				} else {
@@ -243,34 +271,35 @@ public class SequenceHandler {
 				break;
 				
 			//Block 2: High-effort or Low-effort offloading
-			case 24:
+			case 26:
 				if(Counterbalance.getFactorLevel("effort")==0) {
 					ClickPage.Run(Instructions.Get(18), "Next");
 				} else {
 					ClickPage.Run(Instructions.Get(181), "Next");
 				}
 				break;
-			case 25:
-				IOtask2Block block7= new IOtask2Block();
+			case 27:
+				IOtask2Block block8= new IOtask2Block();
 				if(Counterbalance.getFactorLevel("effort")==0) {
-					block7.highEffort = true;
+					block8.highEffort = true;
 				}
-				block7.blockNum = 2;
-				block7.WMC = true;
-				block7.nTargetsVariable = true;
-				block7.nTargetsShuffle = true;
+				block8.blockNum = 3;
+				block8.WMC = true;
+				block8.nTargetsVariable = true;
+				block8.nTargetsShuffle = true;
 				
-				block7.nTargetsList.add(1);
-				block7.nTargetsList.add(2);
-				block7.nTargetsList.add(3);
-				block7.nTargetsList.add(4);
-				block7.nTargetsList.add(5);
-				block7.nTargetsList.add(6);
-				block7.nTargetsList.add(7);
-				block7.nTargetsList.add(8);
+				block8.nTargetsList.add(2);
+				block8.nTargetsList.add(4);
+				block8.nTargetsList.add(6);
+				block8.nTargetsList.add(2);
+				block8.nTargetsList.add(4);
+				block8.nTargetsList.add(6);
+				block8.nTargetsList.add(2);
+				block8.nTargetsList.add(4);
+				block8.nTargetsList.add(6);
 				
-				block7.nTrials = 8;
-				block7.Run();	
+				block8.nTrials = 9;
+				block8.Run();	
 				break;
 				
 			}
