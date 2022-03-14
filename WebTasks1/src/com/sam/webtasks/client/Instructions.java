@@ -167,7 +167,7 @@ public class Instructions {
 		case 19:
 			i="The experiment will now begin.<br><br>In this first block of trials, you will do the same task <b>9 times</b> and each time you will "
 					+ "get <b>2, 4, or 6</b> special circles.<br><br> You will be told the number of special circles before each trial.<br><br>"
-					+ "You will have to rely on your own memory with no reminders throughout the task, and the aim is to get as many special circles correct in as little time as possible.<br><br>"
+					+ "You will have to rely on your own memory with no reminders throughout the task. The aim is to get as many special circles correct in as little time as possible.<br><br>"
 					+ "However, don't worry if you do not remember all of them. That's fine - just try to remember as many as you can.";
 			break;
 			
