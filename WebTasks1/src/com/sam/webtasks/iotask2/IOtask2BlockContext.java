@@ -10,6 +10,10 @@ import com.sam.webtasks.client.SequenceHandler;
 public class IOtask2BlockContext {
 	private static IOtask2Block blockContext;
 
+	public static int getSubLoop() {
+		return (blockContext.subLoop);
+	}
+	
 	public static void setContext(IOtask2Block block) {
 		blockContext = block;
 	}

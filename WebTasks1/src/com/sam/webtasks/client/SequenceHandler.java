@@ -59,7 +59,6 @@ public class SequenceHandler {
 	static int totalCircles, nTargets, reminderLockout;
 	
 	public static void Next() {	
-		//Window.alert(whichLoop + "," + sequencePosition.get(whichLoop));
 		
 		// move forward one step in whichever loop we are now in
 		sequencePosition.set(whichLoop, sequencePosition.get(whichLoop) + 1);
@@ -72,6 +71,7 @@ public class SequenceHandler {
 			 **********************************************************************/
 			//Practice 1: no special circle
 			case 1:
+				//Window.alert("condition: " + Counterbalance.getFactorLevel("WhichReminderConditionFirst"));
 				SessionInfo.sessionKey = SessionKey.Get();
 				ClickPage.Run(Instructions.Get(0), "Next");
 				break;
@@ -140,7 +140,7 @@ public class SequenceHandler {
 				Slider.Run(Instructions.Get(6), "0%", "100%");
 				break;
 			case 11:
-				PHP.logData("jol1", ""+Slider.getSliderValue(), true);
+				PHP.logData("jol2", ""+Slider.getSliderValue(), true);
 				break;
 			case 12:
 				Slider.Run(Instructions.Get(7), "0%", "100%");
@@ -152,59 +152,32 @@ public class SequenceHandler {
 				Slider.Run(Instructions.Get(8), "0%", "100%");
 				break;
 			case 15:
-				PHP.logData("jol8", ""+Slider.getSliderValue(), true);
+				PHP.logData("jol6", ""+Slider.getSliderValue(), true);
 				break;
 			
-			//Forced Internal Block
+			// Teach & practice offloading strategy (low / high effort)
 			case 16:
-				ClickPage.Run(Instructions.Get(19),  "Next");
-				break;
-			case 17:
-				IOtask2Block block4= new IOtask2Block();
-				
-				block4.blockNum = 1;
-				block4.WMC = true;
-				block4.offloadCondition=Names.REMINDERS_NOTALLOWED;
-				block4.nTargetsVariable = true;
-				block4.nTargetsShuffle = true;
-				
-				
-				block4.nTargetsList.add(2);
-				block4.nTargetsList.add(4);
-				block4.nTargetsList.add(6);
-				block4.nTargetsList.add(2);
-				block4.nTargetsList.add(4);
-				block4.nTargetsList.add(6);
-				block4.nTargetsList.add(2);
-				block4.nTargetsList.add(4);
-				block4.nTargetsList.add(6);
-			
-				block4.nTrials = 9;
-				block4.Run();	
-				break;
-				
-			//Low-effort or High-effort reminder practice
-			case 18:
-				if(Counterbalance.getFactorLevel("effort")==0) {
-					ClickPage.Run(Instructions.Get(10), "Next");
-				} else {
+				if (Counterbalance.getFactorLevel("WhichEffortConditionFirst")==ExtraNames.HIGH_EFFORT_FIRST) {
 					ClickPage.Run(Instructions.Get(101), "Next");
+				} else if (Counterbalance.getFactorLevel("WhichEffortConditionFirst")==ExtraNames.LOW_EFFORT_FIRST) {
+					ClickPage.Run(Instructions.Get(10),  "Next");
 				}
-				
 				break;
-			case 19:
-				IOtask2Block block5 = new IOtask2Block();
-				if(Counterbalance.getFactorLevel("effort")==1) {
-					block5.highEffort = true;
+			
+			case 17:
+				IOtask2Block block4 = new IOtask2Block();
+				if(Counterbalance.getFactorLevel("WhichEffortConditionFirst")==ExtraNames.HIGH_EFFORT_FIRST) {
+					block4.highEffort = true;
 				}
-				block5.totalCircles = 10;
-				block5.blockNum = -5;
-				block5.nTargets = 4;
-				block5.offloadCondition=Names.REMINDERS_MANDATORY_TARGETONLY;
-				block5.logDragData = true;
-				block5.Run();
+				block4.totalCircles = 10;
+				block4.blockNum = -5;
+				block4.nTargets = 4;
+				block4.offloadCondition=Names.REMINDERS_MANDATORY_TARGETONLY;
+				block4.logDragData = true;
+				block4.Run();
 				break;
-			case 20:
+			
+			case 18:
 				if (IOtask2BlockContext.getnHits() < 3) { 
 					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-2); //this line means that instead of moving forward we will repeat the previous instructions
 					ClickPage.Run(Instructions.Get(11), "Try again");
@@ -213,13 +186,91 @@ public class SequenceHandler {
 				}
 				break;
 				
-			//Block 1: Low-effort or High-effort offloading
-			case 21:
-				ClickPage.Run(Instructions.Get(16),  "Next");
+			case 19:
+				ClickPage.Run("Now the experiment will start for real.", "Next");
 				break;
+			
+			case 20:
+				//now run the first subloop (reminder or no-reminder)
+				if (Counterbalance.getFactorLevel("WhichReminderConditionFirst")==ExtraNames.NO_REMINDER_FIRST) {
+					SequenceHandler.SetLoop(4, true);
+					SequenceHandler.Next();
+				} else if (Counterbalance.getFactorLevel("WhichReminderConditionFirst")==ExtraNames.REMINDER_FIRST) {
+					SequenceHandler.SetLoop(5, true);
+					SequenceHandler.Next();
+				}
+				break;
+				
+			case 21: 
+				//now run the second subloop, whichever one we did not run before
+				if (Counterbalance.getFactorLevel("WhichReminderConditionFirst")==ExtraNames.NO_REMINDER_FIRST) {
+					SequenceHandler.SetLoop(5, true);
+					SequenceHandler.Next();
+				} else if (Counterbalance.getFactorLevel("WhichReminderConditionFirst")==ExtraNames.REMINDER_FIRST) {
+					SequenceHandler.SetLoop(4, true);
+					SequenceHandler.Next();
+				}
+				break;
+				
 			case 22:
+				ClickPage.Run("You have now reached the end of the experiment", "The end");
+				break;
+			}
+			break;
+		
+			
+		//here we specify the no-reminder subloop
+		case 4:
+			switch (sequencePosition.get(4)) {
+			case 1:
+				ClickPage.Run("For this part of the experiment you will not be able to set reminders.", "Next");
+				break;
+			case 2:
+				ClickPage.Run(Instructions.Get(19), "Next");
+				break;
+			case 3:
+				IOtask2Block block5= new IOtask2Block();
+				
+				block5.blockNum = 1;
+				block5.WMC = true;
+				block5.offloadCondition=Names.REMINDERS_NOTALLOWED;
+				block5.nTargetsVariable = true;
+				block5.nTargetsShuffle = true;
+				
+				
+				block5.nTargetsList.add(2);
+				block5.nTargetsList.add(4);
+				block5.nTargetsList.add(6);
+				block5.nTargetsList.add(2);
+				block5.nTargetsList.add(4);
+				block5.nTargetsList.add(6);
+				block5.nTargetsList.add(2);
+				block5.nTargetsList.add(4);
+				block5.nTargetsList.add(6);
+			
+				block5.nTrials = 9;
+				block5.Run();	
+				break;
+			case 4:
+				//return to the main loop
+				SequenceHandler.SetLoop(0,  false);
+				SequenceHandler.Next();	
+				break;
+			}
+			break;
+	
+		//here we specify the reminder subloop
+		case 5:
+			switch (sequencePosition.get(5)) {
+			case 1:
+				ClickPage.Run("For this part of the experiment you can set reminders if you want.", "Next");
+				break;
+			case 2:
+				ClickPage.Run(Instructions.Get(16), "Next");
+				break;
+			case 3:
 				IOtask2Block block6= new IOtask2Block();
-				if(Counterbalance.getFactorLevel("effort")==1) {
+				if (Counterbalance.getFactorLevel("WhichEffortConditionFirst")==ExtraNames.HIGH_EFFORT_FIRST) {
 					block6.highEffort = true;
 				}
 				block6.blockNum = 2;
@@ -238,20 +289,21 @@ public class SequenceHandler {
 				block6.nTargetsList.add(6);
 				
 				block6.nTrials = 9;
+				
+				block6.subLoop = 5;
+				
 				block6.Run();	
 				break;
-				
-			//Change in effort: practice
-			case 23:
-				if(Counterbalance.getFactorLevel("effort")==0) {
-					ClickPage.Run(Instructions.Get(17), "Next");
-				} else {
+			case 4:
+				if (Counterbalance.getFactorLevel("WhichEffortConditionFirst")==ExtraNames.HIGH_EFFORT_FIRST) {
 					ClickPage.Run(Instructions.Get(171), "Next");
+				} else if (Counterbalance.getFactorLevel("WhichEffortConditionFirst")==ExtraNames.LOW_EFFORT_FIRST) {
+					ClickPage.Run(Instructions.Get(17), "Next");
 				}
 				break;
-			case 24:
+			case 5:
 				IOtask2Block block7 = new IOtask2Block();
-				if(Counterbalance.getFactorLevel("effort")==0) {
+				if (Counterbalance.getFactorLevel("WhichEffortConditionFirst")==ExtraNames.LOW_EFFORT_FIRST) {
 					block7.highEffort = true;
 				}
 				block7.totalCircles = 10;
@@ -259,9 +311,12 @@ public class SequenceHandler {
 				block7.nTargets = 4;
 				block7.offloadCondition=Names.REMINDERS_MANDATORY_TARGETONLY;
 				block7.logDragData = true;
+				
+				block7.subLoop = 5;
+				
 				block7.Run();
 				break;
-			case 25:
+			case 6:
 				if (IOtask2BlockContext.getnHits() < 3) { 
 					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-2); //this line means that instead of moving forward we will repeat the previous instructions
 					ClickPage.Run(Instructions.Get(11), "Try again");
@@ -269,18 +324,16 @@ public class SequenceHandler {
 					SequenceHandler.Next(); //move to the next instruction
 				}
 				break;
-				
-			//Block 2: High-effort or Low-effort offloading
-			case 26:
-				if(Counterbalance.getFactorLevel("effort")==0) {
-					ClickPage.Run(Instructions.Get(18), "Next");
-				} else {
+			case 7:
+				if (Counterbalance.getFactorLevel("WhichEffortConditionFirst")==ExtraNames.HIGH_EFFORT_FIRST) {
 					ClickPage.Run(Instructions.Get(181), "Next");
+				} else if (Counterbalance.getFactorLevel("WhichEffortConditionFirst")==ExtraNames.LOW_EFFORT_FIRST) {
+					ClickPage.Run(Instructions.Get(18), "Next");
 				}
 				break;
-			case 27:
+			case 8:
 				IOtask2Block block8= new IOtask2Block();
-				if(Counterbalance.getFactorLevel("effort")==0) {
+				if (Counterbalance.getFactorLevel("WhichEffortConditionFirst")==ExtraNames.LOW_EFFORT_FIRST) {
 					block8.highEffort = true;
 				}
 				block8.blockNum = 3;
@@ -301,9 +354,19 @@ public class SequenceHandler {
 				block8.nTrials = 9;
 				block8.Run();	
 				break;
-				
+			case 9:
+				//return to the main loop
+				SequenceHandler.SetLoop(0,  false);
+				SequenceHandler.Next();	
+				break;
 			}
 			break;
+			
+			
+		
+				
+			
+		
 
 		/********************************************/
 		/* no need to edit the code below this line */
@@ -410,7 +473,7 @@ public class SequenceHandler {
 				IOtask2Block block = IOtask2BlockContext.getContext();
 				
 				if (block.currentTrial == block.nTrials) {
-					SequenceHandler.SetLoop(0,  false);
+					SequenceHandler.SetLoop(block.subLoop,  false);
 				}
 				
 				SequenceHandler.Next();
@@ -418,7 +481,7 @@ public class SequenceHandler {
 			case 2:
 				IOtask2InitialiseTrial.Run();
 				break;
-			case 3:;
+			case 3:
 				//present the pre-trial choice if appropriate
 				if (IOtask2BlockContext.currentTargetValue() > -1) {
 					IOtask2PreTrial.Run();
@@ -452,7 +515,9 @@ public class SequenceHandler {
 				break;
 			case 4:
 				if (IOtask2BlockContext.getNTrials() == -1) { //if nTrials has been set to -1, we quit before running
-					SequenceHandler.SetLoop(0,  false);
+					int subloop = IOtask2BlockContext.getSubLoop();
+					
+					SequenceHandler.SetLoop(subloop,  false);
 					SequenceHandler.Next();
 				} else {
 					//otherwise, run the trial

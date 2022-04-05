@@ -12,6 +12,9 @@ import com.sam.webtasks.client.SequenceHandler;
 
 public class IOtask2Block {
 	// set defaults for the parameters
+	
+	// which subloop has called this block?
+	public int subLoop = 0;
 
 	// number of trials to run
 	public int nTrials = 1;

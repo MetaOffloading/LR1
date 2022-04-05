@@ -84,7 +84,7 @@ public class Instructions {
 					+ "that you can never get any of them correct.";
 			break;
 		case 10:
-			i="In the next part of the experiment, we are going to explain a strategy that can make the task easier.<br><br>"
+			i="Now we are going to explain a strategy that can make the task easier.<br><br>"
                     + "When you see a special circle, you can <b>set a reminder</b> by immediately dragging it to a "
                     + "different part of the box. For example, if a circle initially appeared in blue, you "
                     + "could immediately drag it next to the blue (left) side of the box. Then, when "
@@ -94,7 +94,7 @@ public class Instructions {
                     + "only let you proceed if you set a reminder for each special circle.";
 			break;
 		case 101:
-			i="In the next part of the experiment, we are going to explain a strategy that can make the task easier.<br><br>"
+			i="Now we are going to explain a strategy that can make the task easier.<br><br>"
                     + "When you see a special circle, you can <b>set a reminder</b> by immediately dragging it to a "
                     + "different part of the box. For example, if a circle initially appeared in blue, you "
                     + "could immediately drag it next to the blue (left) side of the box. Then, when "
@@ -133,7 +133,7 @@ public class Instructions {
 					+ "Then you will enter the above experiment code when prompted.";
 			break;
 		case 16:
-			i="Now the experiment will continue.<br><br>In the next block of trials you will do the same task <b>9 times</b> with the option of setting reminders. Each time you will "
+			i="In this block of trials you will perform the circle-dragging task <b>9 times</b> with the option of setting reminders. Each time you will "
 				+ "get <b>2, 4, or 6</b> special circles, and you will be told the number of special circles before every trial.<br><br> "
 				+ "The aim is to get as many special circles correct in as little time as possible.<br><br>When doing the task, it is up to you whether to set reminders "
 				+ "or just remember the special circles with your own memory.<br><br>"
@@ -152,22 +152,22 @@ public class Instructions {
 				    + "Please now practice this modified strategy in a task with 4 special circles. The computer will not let you proceed unless you set a reminder every time.";
 			break;
 		case 18:
-			i="This will be the final part of the experiment. In this block of trials you will do the same task <b>9 times</b> again, and each time you will be told the number of special circles you get (2, 4, or 6). The aim is to get as many special circles correct in as little time as possible.<br><br>"
+			i="In this block of trials you will perform the circle-dragging task <b>9 times</b> again, and each time you will be told the number of special circles you get (2, 4, or 6). The aim is to get as many special circles correct in as little time as possible.<br><br>"
 			    + "When doing the task, it is again up to you whether to set reminders or just remember the special circles with your own memory. Please note that you will be using the <b>modified strategy</b> with the additional clicking task if you decide to set a reminder.<br><br>"
 			    + "You can choose whichever option you prefer. So each time you do the task, feel free to either set reminders for the special "
 				+ "circles or just use your own memory. It is totally up to you.";
 			
 			break;
 		case 181:
-			i="This will be the final part of the experiment. In this block of trials you will do the same task <b>9 times</b> again, and each time you will be told the number of special circles you get (2, 4, or 6). The aim is to get as many special circles correct in as little time as possible.<br><br>"
+			i="In this block of trials you will perform the circle-dragging task <b>9 times</b> again, and each time you will be told the number of special circles you get (2, 4, or 6). The aim is to get as many special circles correct in as little time as possible.<br><br>"
 			    + "When doing the task, it is again up to you whether to set reminders or just remember the special circles with your own memory. Please note that you will be using the <b>modified strategy</b> with no additional clicking task if you decide to set a reminder.<br><br>"
 			    + "You can choose whichever option you prefer. So each time you do the task, feel free to either set reminders for the special "
 				+ "circles or just use your own memory. It is totally up to you.";
 			break;
 		case 19:
-			i="The experiment will now begin.<br><br>In this first block of trials, you will do the same task <b>9 times</b> and each time you will "
+			i="In this block of trials, you will perform the circle-dragging task <b>9 times</b> and each time you will "
 					+ "get <b>2, 4, or 6</b> special circles.<br><br> You will be told the number of special circles before each trial.<br><br>"
-					+ "You will have to rely on your own memory with no reminders throughout the task. The aim is to get as many special circles correct in as little time as possible.<br><br>"
+					+ "You will have to rely on your own memory with <b>no reminders</b> throughout the task. The aim is to get as many special circles correct in as little time as possible.<br><br>"
 					+ "However, don't worry if you do not remember all of them. That's fine - just try to remember as many as you can.";
 			break;
 			
