@@ -557,9 +557,8 @@ public class IOtask2RunTrial {
 								+ ",";
 						data = data + IOtask2BlockContext.getExitFlag() + "," + IOtask2BlockContext.getSurpriseTest();
 						
-						if (SessionInfo.experimentType == Names.EXPERIMENT_WMC) {
-							data = data + "," + IOtask2BlockContext.getNtargets();
-						}
+						data = data + "," + IOtask2BlockContext.getNtargets();
+						
 
 						PHP.logData("dragEnd", data, false);
 					}

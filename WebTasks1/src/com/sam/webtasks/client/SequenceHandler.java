@@ -236,7 +236,7 @@ public class SequenceHandler {
 				block5.offloadCondition=Names.REMINDERS_NOTALLOWED;
 				block5.nTargetsVariable = true;
 				block5.nTargetsShuffle = true;
-				
+				block5.logDragData = true;
 				
 				block5.nTargetsList.add(2);
 				block5.nTargetsList.add(4);
@@ -277,6 +277,7 @@ public class SequenceHandler {
 				block6.WMC = true;
 				block6.nTargetsVariable = true;
 				block6.nTargetsShuffle = true;
+				block6.logDragData = true;
 				
 				block6.nTargetsList.add(2);
 				block6.nTargetsList.add(4);
@@ -340,6 +341,7 @@ public class SequenceHandler {
 				block8.WMC = true;
 				block8.nTargetsVariable = true;
 				block8.nTargetsShuffle = true;
+				block8.logDragData = true;
 				
 				block8.nTargetsList.add(2);
 				block8.nTargetsList.add(4);
