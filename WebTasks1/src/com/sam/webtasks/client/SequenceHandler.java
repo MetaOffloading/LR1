@@ -223,8 +223,7 @@ public class SequenceHandler {
 				data = data + Counterbalance.getFactorLevel("WhichReminderConditionFirst") + ",";
 				data = data + Counterbalance.getFactorLevel("WhichEffortConditionFirst") + ",";
 				data = data + SessionInfo.gender + ",";
-				data = data + SessionInfo.age + ",";
-				data = data + TimeStamp.Now();
+				data = data + SessionInfo.age;
 
 				PHP.UpdateStatus("finished");
 				PHP.logData("finish", data, true);
