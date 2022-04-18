@@ -213,6 +213,19 @@ public class SequenceHandler {
 				break;
 				
 			case 22:
+				// log data and check that it saves
+				String data = TimeStamp.Now() + ",";
+				data = data + SessionInfo.prolificExperimentCode + ",";
+				data = data + Counterbalance.getFactorLevel("WhichReminderConditionFirst") + ",";
+				data = data + Counterbalance.getFactorLevel("WhichEffortConditionFirst") + ",";
+				data = data + SessionInfo.gender + ",";
+				data = data + SessionInfo.age + ",";
+				data = data + TimeStamp.Now();
+
+				PHP.UpdateStatus("finished");
+				PHP.logData("finish", data, true);
+				break;
+			case 23:
 				ClickPage.Run("You have now reached the end of the experiment", "The end");
 				break;
 			}
