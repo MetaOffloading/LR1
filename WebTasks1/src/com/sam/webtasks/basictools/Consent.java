@@ -52,7 +52,8 @@ public class Consent {
         final Label genderLabel = new Label("Are you: ");
         final RadioButton maleRadioButton = new RadioButton("gender", "male");
         final RadioButton femaleRadioButton = new RadioButton("gender", "female");
-        final RadioButton otherRadioButton = new RadioButton("gender", "other");
+        final RadioButton otherRadioButton = new RadioButton("gender", "prefer to self-describe:");
+        final TextBox genderBox = new TextBox();
         final Label projectTitleText = new Label();
         final HTML approvalHTML = new HTML();
         final HTML bodyHTML = new HTML();
@@ -131,11 +132,13 @@ public class Consent {
         genderPanel.add(maleRadioButton);
         genderPanel.add(femaleRadioButton);
         genderPanel.add(otherRadioButton);
+        genderPanel.add(genderBox);
 
         mainPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 
         checkBoxPanel.setStyleName("bottomMarginSmall");
         ageBox.setStyleName("bottomMarginSmall");
+        genderBox.setStyleName("bottomMarginSmall");
 
         buttonPanel.add(backButton);
         buttonPanel.add(agreeButton);
@@ -261,6 +264,7 @@ public class Consent {
         RootPanel.get().add(scrollPanel);
         
         ageBox.setWidth(ageBoxLabel.getOffsetWidth() + "px");
+        genderBox.setWidth(ageBoxLabel.getOffsetWidth() + "px");
         emailTextBox.setWidth((printText.getOffsetWidth() - 5) + "px");
     }
 

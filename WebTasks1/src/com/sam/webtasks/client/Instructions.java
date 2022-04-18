@@ -170,7 +170,12 @@ public class Instructions {
 					+ "You will have to rely on your own memory with <b>no reminders</b> throughout the task. The aim is to get as many special circles correct in as little time as possible.<br><br>"
 					+ "However, don't worry if you do not remember all of them. That's fine - just try to remember as many as you can.";
 			break;
-			
+		case 20:
+			i = "You have now completed the experiment. Thank you for taking part.<br><br>"
+					+ "Please click on the link below to receive your payment:"
+					+ "<b><a href=\"https://app.prolific.co/submissions/complete?cc=7EB98BB9\">"
+					+ "CLICK HERE</a></b>";
+			break;
 		}
 
 		return(i);	

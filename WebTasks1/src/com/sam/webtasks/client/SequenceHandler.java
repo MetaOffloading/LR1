@@ -191,6 +191,10 @@ public class SequenceHandler {
 				break;
 			
 			case 20:
+				ProgressBar.Initialise();
+				ProgressBar.Show();
+				ProgressBar.SetProgress(0,  27);
+				
 				//now run the first subloop (reminder or no-reminder)
 				if (Counterbalance.getFactorLevel("WhichReminderConditionFirst")==ExtraNames.NO_REMINDER_FIRST) {
 					SequenceHandler.SetLoop(4, true);
@@ -226,7 +230,9 @@ public class SequenceHandler {
 				PHP.logData("finish", data, true);
 				break;
 			case 23:
-				ClickPage.Run("You have now reached the end of the experiment", "The end");
+				ProgressBar.Hide();
+				
+				ClickPage.Run(Instructions.Get(20), "nobutton");
 				break;
 			}
 			break;
@@ -262,6 +268,9 @@ public class SequenceHandler {
 				block5.nTargetsList.add(6);
 			
 				block5.nTrials = 9;
+				
+				block5.updateProgress=true;
+				
 				block5.Run();	
 				break;
 			case 4:
@@ -305,6 +314,8 @@ public class SequenceHandler {
 				block6.nTrials = 9;
 				
 				block6.subLoop = 5;
+				
+				block6.updateProgress = true;
 				
 				block6.Run();	
 				break;
@@ -367,6 +378,9 @@ public class SequenceHandler {
 				block8.nTargetsList.add(6);
 				
 				block8.nTrials = 9;
+				
+				block8.updateProgress = true;
+				
 				block8.Run();	
 				break;
 			case 9:
