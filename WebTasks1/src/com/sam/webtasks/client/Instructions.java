@@ -173,7 +173,7 @@ public class Instructions {
 		case 20:
 			i = "You have now completed the experiment. Thank you for taking part.<br><br>"
 					+ "Please click on the link below to receive your payment:<br><br>"
-					+ "<b><a href=\"https://app.prolific.co/submissions/complete?cc=7EB98BB9\">"
+					+ "<b><a href=\"https://app.prolific.co/submissions/complete?cc=81B220FE\">"
 					+ "CLICK HERE</a></b>";
 			break;
 		}
