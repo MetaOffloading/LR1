@@ -186,7 +186,7 @@ public class SequenceHandler {
 				}
 				break;
 				
-			case 19:
+			case 19: 
 				ClickPage.Run("Now the experiment will start for real.", "Next");
 				break;
 			
