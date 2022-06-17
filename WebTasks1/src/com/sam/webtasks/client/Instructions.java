@@ -109,7 +109,7 @@ public class Instructions {
 			i="You need to respond correctly to at least 3 of the special circles to continue.";
 			break;
 		case 12:
-			i="Now the experiment will start for real.<br><br>In the next block of trials you will do the task 16 times and you will "
+			i="In the next block of trials you will do the task 16 times and you will "
 					+ "always be told whether you are going to get "
 				+ "1, 3, 5, or 7 special circles to remember.<br><br>You will <b>not</b> be able to set reminders in this "
 				+ "part of the experiment. So you will have to rely on your own memory alone.";

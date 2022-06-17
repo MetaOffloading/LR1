@@ -187,7 +187,10 @@ public class SequenceHandler {
 				break;
 				
 			case 19: 
-				ClickPage.Run("Now the experiment will start for real.", "Next");
+				ClickPage.Run("Now the experiment will start for real.<br><br>"
+						+ "From now on we will be monitoring how well you remember the special "
+						+ "circles. If you are in the top 50% of participants, you will receive "
+						+ "an additional <b>£1 bonus</b> via the Prolific system.", "Next");
 				break;
 			
 			case 20:

@@ -57,7 +57,9 @@ public class Initialise {
 			SessionInfo.participantID = Window.Location.getParameter("PROLIFIC_PID");
 			
 			if (SessionInfo.participantID == null) {
-				SessionInfo.participantID = Window.prompt("What is your Prolific ID?",  "");
+				if (SessionInfo.localTesting == false) {
+					SessionInfo.participantID = Window.prompt("What is your Prolific ID?",  "");
+				}
 			}
 			
 			if (SessionInfo.sessionKey == null) {
