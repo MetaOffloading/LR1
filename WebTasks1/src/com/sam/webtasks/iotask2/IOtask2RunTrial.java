@@ -43,6 +43,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sam.webtasks.basictools.Names;
 import com.sam.webtasks.basictools.PHP;
 import com.sam.webtasks.basictools.ProgressBar;
+import com.sam.webtasks.client.ExtraNames;
 import com.sam.webtasks.client.Params;
 import com.sam.webtasks.client.SequenceHandler;
 import com.sam.webtasks.client.SessionInfo;
@@ -52,6 +53,8 @@ import com.sam.webtasks.iotask1.IOtask1DisplayParams;
 public class IOtask2RunTrial {
 
 	public static void Run() {
+		ExtraNames.alreadyClicked = false;
+		
 		int m = IOtask2BlockContext.countdownTime() / 60;
 		int s = IOtask2BlockContext.countdownTime() % 60;
 		String tLabel;
@@ -507,8 +510,12 @@ public class IOtask2RunTrial {
 
 					if (IOtask2BlockContext.getHighEffort()) {
 						if (clickedCircle != IOtask2BlockContext.getNextCircle()) {
-							int nClicks = 5;
-
+							int nClicks = 15;
+							
+							if (ExtraNames.alreadyClicked) {
+								nClicks = 0;
+							}
+							
 							while (nClicks > 0) {
 								String message = "Click " + nClicks + " times.";
 
@@ -518,9 +525,9 @@ public class IOtask2RunTrial {
 
 								if (isTarget) {
 									Window.alert(message);
+									ExtraNames.alreadyClicked = true;
 								}
 							}
-
 						}
 					}
 					
@@ -555,8 +562,7 @@ public class IOtask2RunTrial {
 						data = data + IOtask2BlockContext.getTargetSide(circleNum) + ",";
 						data = data + (IOtask2BlockContext.getNextCircle() + IOtask2BlockContext.getCircleAdjust())
 								+ ",";
-						data = data + IOtask2BlockContext.getExitFlag() + "," + IOtask2BlockContext.getSurpriseTest();
-						
+						data = data + IOtask2BlockContext.getExitFlag() + "," + IOtask2BlockContext.getSurpriseTest();					
 						data = data + "," + IOtask2BlockContext.getNtargets();
 						
 

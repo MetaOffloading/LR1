@@ -10,5 +10,7 @@ public class ExtraNames {
 	
 	public final static int REMINDER_FIRST=0;
 	public final static int NO_REMINDER_FIRST=1;
+	
+	public static boolean alreadyClicked=false;
 }
 
