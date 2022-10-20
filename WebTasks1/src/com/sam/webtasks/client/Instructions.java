@@ -197,7 +197,7 @@ public class Instructions {
                 + "and you will be asked to respond to them by pressing keys. Sometimes you will be asked how "
                 + "confident you are in your ability to perform the task. "
                 + "The experiment "
-                + "will last approximately 1 hour and you will receive a payment of £7.50 via the "
+                + "will last approximately 25 minutes and you will receive a payment of £3 via the "
                 + "Prolific Academic payment system. There are no anticipated risks or "
                 + "benefits associated with participation in this study.<br><br>"
                 + "It is up to you to decide whether or not to take part. If you choose "
