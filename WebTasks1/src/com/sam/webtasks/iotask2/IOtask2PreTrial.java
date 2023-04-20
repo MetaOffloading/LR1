@@ -20,7 +20,6 @@ import com.sam.webtasks.client.SequenceHandler;
 
 public class IOtask2PreTrial {
 	public static void Run() {
-		
 		final Date instructionStart = new Date();
 		
 		IOtask2BlockContext.setReminderFlag(-1);

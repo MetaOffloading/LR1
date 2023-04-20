@@ -90,7 +90,7 @@ public class Instructions {
                     + "could immediately drag it next to the blue (left) side of the box. Then, when "
                     + "you get to that circle in the sequence its location would remind you where it is supposed "
                     + "to go. If you set this reminder for all of the special circles it should be easy to remember them."
-                    + "<br><br>Please now practice this strategy in a task with 4 special circles. The computer will "
+                    + "<br><br>Please now practice this strategy. The computer will "
                     + "only let you proceed if you set a reminder for each special circle.";
 			break;
 		case 101:
@@ -107,7 +107,7 @@ public class Instructions {
                     + "only let you proceed if you set a reminder for each special circle.";
 			break;
 		case 11:
-			i="You need to respond correctly to at least 3 of the special circles to continue.";
+			i="You need to respond correctly to at least 2 of the special circles to continue.";
 			break;
 		case 12:
 			i="Now the experiment will start for real.<br><br>In the next block of trials you will do the task 16 times and you will "
