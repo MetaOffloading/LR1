@@ -58,7 +58,7 @@ public class Initialise {
 			
 			if (SessionInfo.participantID == null) {
 				if (SessionInfo.localTesting == false) {
-					SessionInfo.participantID = Window.prompt("What is your Prolific ID?",  "");
+					SessionInfo.participantID = Window.prompt("What is your participant ID?",  "");
 				}
 			}
 			

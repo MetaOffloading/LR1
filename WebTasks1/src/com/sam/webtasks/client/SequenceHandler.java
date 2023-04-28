@@ -133,7 +133,7 @@ public class SequenceHandler {
 			case 10:
 				ProgressBar.Initialise();
 				ProgressBar.Show();
-				ProgressBar.SetProgress(0,  2);
+				ProgressBar.SetProgress(0,  20);
 				
 				//now run the first subloop (reminder or no-reminder)
 				if (Counterbalance.getFactorLevel("WhichReminderConditionFirst")==ExtraNames.NO_REMINDER_FIRST) {
@@ -170,7 +170,7 @@ public class SequenceHandler {
 			case 13:
 				ProgressBar.Hide();
 				
-				ClickPage.Run("The end", "nobutton");
+				ClickPage.Run("You have now completed the experiment. Thank you for taking part.", "nobutton");
 				break;
 			}
 			break;
@@ -180,7 +180,8 @@ public class SequenceHandler {
 		case 4:
 			switch (sequencePosition.get(4)) {
 			case 1:
-				ClickPage.Run("For this part of the experiment you will not be able to set reminders.", "Next");
+				ClickPage.Run("For this part of the experiment you will not be able to set reminders, "
+						+ "so you will have to rely on your own memory only.", "Next");
 				break;
 			case 2:
 				//ClickPage.Run(Instructions.Get(19), "Next");
@@ -196,9 +197,11 @@ public class SequenceHandler {
 				block5.nTargetsShuffle = true;
 				block5.logDragData = true;
 				
-				block5.nTargetsList.add(3);
+				for (int i=0; i<10; i++) {
+					block5.nTargetsList.add(3);
+				}
 			
-				block5.nTrials = 1;
+				block5.nTrials = 10;
 				block5.subLoop = 4;
 				
 				block5.updateProgress=true;
@@ -217,7 +220,8 @@ public class SequenceHandler {
 		case 5:
 			switch (sequencePosition.get(5)) {
 			case 1:
-				ClickPage.Run("For this part of the experiment you can set reminders if you want.", "Next");
+				ClickPage.Run("For this part of the experiment you can set reminders if you want.<br><br>"
+						+ "It is completely up to you whether to use reminders or your own memory.", "Next");
 				break;
 			case 2:
 				//ClickPage.Run(Instructions.Get(16), "Next");
@@ -232,9 +236,11 @@ public class SequenceHandler {
 				block6.logDragData = true;
 				block6.offloadCondition=Names.REMINDERS_OPTIONAL;
 				
-				block6.nTargetsList.add(3);
+				for (int i=0; i<10; i++) {
+					block6.nTargetsList.add(3);
+				}
 				
-				block6.nTrials = 1;
+				block6.nTrials = 10;
 				
 				block6.subLoop = 5;
 				
