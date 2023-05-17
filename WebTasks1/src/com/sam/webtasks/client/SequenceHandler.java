@@ -128,7 +128,7 @@ public class SequenceHandler {
 				}
 				break;
 			case 9: 
-				ClickPage.Run("Now the experient will start for real.", "Next");
+				ClickPage.Run("Now the experiment will start for real.", "Next");
 				break;
 			case 10:
 				ProgressBar.Initialise();
